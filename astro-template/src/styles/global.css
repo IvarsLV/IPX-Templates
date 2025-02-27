@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Глобальные переменные */
+:root {
+  --background: #f9fafb;
+  --text-primary: #111827;
+  --accent: #22c55e;
+  --hover-accent: #a7f3d0;
+}
+
+/* Основные стили */
+body {
+  @apply bg-[var(--background)] text-[var(--text-primary)] font-sans;
+}
+
+/* Анимация появления */
+.fade-in {
+  @apply opacity-0 transition-opacity duration-500;
+}
+.fade-in.visible {
+  @apply opacity-100;
+}

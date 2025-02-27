@@ -1,0 +1,27 @@
+---
+interface Props {
+  href: string;
+  variant?: 'default' | 'primary';
+}
+
+const { href, variant = 'default' } = Astro.props;
+
+// Базовые классы как строка
+const baseClasses: string = 'px-4 py-2 rounded font-medium transition-colors';
+
+// Варианты стилей с точной типизацией
+const variantClasses = {
+  default: 'bg-gray-200 text-gray-900 hover:bg-gray-300',
+  primary: 'bg-orange-600 text-button text-white hover:bg-orange-500',
+} as const;
+
+// Тип для variant как ключи variantClasses
+type Variant = keyof typeof variantClasses;
+
+// Комбинируем классы
+const classes: string = `${baseClasses} ${variantClasses[variant]}`;
+---
+
+<a href={href} class={classes}>
+  <slot />
+</a>
